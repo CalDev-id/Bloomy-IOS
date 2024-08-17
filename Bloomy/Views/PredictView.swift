@@ -10,15 +10,17 @@ import SwiftUI
 struct PredictView: View {
     @State private var selectedImage: UIImage?
     @State private var isImagePickerPresented = false
+    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @StateObject private var classifier = ImageClassifier()
-    @State private var toggleResult: Bool = false
+    @State private var toggleResult: Bool = true
 
     var body: some View {
         ZStack {
             VStack {
                 Color.white
                     .cornerRadius(20)
-                    .padding(.top, 250)
+                    .padding(.top, 230)
+                    .ignoresSafeArea()
             }
             .background(Color.biru3)
             
@@ -58,19 +60,15 @@ struct PredictView: View {
                 }
     
                 PrimaryBTN(name: "Take From Camera", todo: {
+                    imagePickerSourceType = .camera
                     isImagePickerPresented = true
                 })
-                .sheet(isPresented: $isImagePickerPresented) {
-                    ImagePicker(selectedImage: $selectedImage)
-                }
                 .padding(.vertical, 20)
     
                 PrimaryBTN(name: "Select From Gallery", todo: {
+                    imagePickerSourceType = .photoLibrary
                     isImagePickerPresented = true
                 })
-                .sheet(isPresented: $isImagePickerPresented) {
-                    ImagePicker(selectedImage: $selectedImage)
-                }
     
                 Spacer()
     
@@ -81,19 +79,19 @@ struct PredictView: View {
                     }
                 })
     
-//                Text("Result: \(classifier.classificationResult)")
-    
                 Spacer(minLength: 0)
             }
             
-            // Display the result when toggleResult is true
             if toggleResult {
                 VStack {
                     VStack {
-                        Text("This fish is grade \(classifier.classificationResult)")
+                        Text("This \(classifier.classificationResult) is grade \(classifier.gradingResult)")
                             .foregroundColor(Color.color)
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
+                            .font(.system(size: 22))
+                            .padding(.bottom, 1)
                         Text("This fish is in excellent condition, displaying vibrant colors, firm flesh, and clear eyes. It meets the highest standards of freshness and quality")
+                            .multilineTextAlignment(.center)
                             .padding(.horizontal, 20)
                             .frame(alignment: .center)
                         Button(action: {
@@ -118,6 +116,9 @@ struct PredictView: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .sheet(isPresented: $isImagePickerPresented) {
+            ImagePicker(selectedImage: $selectedImage, sourceType: imagePickerSourceType)
+        }
     }
 }
 

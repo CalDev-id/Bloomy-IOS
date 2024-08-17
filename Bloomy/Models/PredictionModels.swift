@@ -9,4 +9,5 @@ import Foundation
 
 struct PredictionResponse: Codable {
     let predicted_class: String
+    let grading_result: String
 }

@@ -8,30 +8,6 @@
 import Foundation
 import CoreLocation
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let locationManager = CLLocationManager()
-    
-    @Published var location: CLLocation?
-    @Published var authorizationStatus: CLAuthorizationStatus?
-    
-    override init() {
-        super.init()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        self.location = location
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        self.authorizationStatus = status
-    }
-}
-
 class WeatherViewModel: ObservableObject {
     @Published var weather: WeatherResponse?
     private let apiKey = "aee4a3b0bfa61d90dbcb16553b6fff8e"
@@ -58,7 +34,7 @@ class WeatherViewModel: ObservableObject {
         switch description {
         case "Thunderstorm", "Drizzle", "Rain", "Snow", "Squall", "Tornado":
             return "Rain"
-        case "Mist", "Smoke", "Haze", "Fog", "Ash", "Clouds", "few clouds", "broken clouds":
+        case "Mist", "Smoke", "Haze", "Fog", "Ash", "Clouds", "few clouds", "broken clouds", "scattered clouds":
             return "Overcast"
         case "Dust", "Sand", "Clear", "clear sky":
             return "Sunny"

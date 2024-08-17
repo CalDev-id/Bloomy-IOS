@@ -49,14 +49,26 @@ struct TopView: View {
 
 struct NewsView: View {
     var body: some View {
-        VStack {
-            HStack {
-                Text("Top News")
-                    .bold()
-                    .font(.system(size: 20))
-                Spacer()
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                HStack {
+                    Text("Top News")
+                        .bold()
+                        .font(.system(size: 23))
+                    Spacer()
+                }
+                TopNews()
+                HStack {
+                    Text("Today's News")
+                        .bold()
+                        .font(.system(size: 23))
+                    Spacer()
+                }
+                .padding(.top, 8)
+                TodaysNews()
+                    
             }
+            .padding(.leading, 20)
         }
-        .padding(.horizontal, 20)
     }
 }

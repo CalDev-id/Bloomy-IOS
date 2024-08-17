@@ -25,41 +25,45 @@ struct WeatherBox: View {
                 if let weather = weatherVM.weather {
                     VStack {
                         HStack {
-                            VStack(alignment: .leading){
-                                HStack{
-                                    Image("locationIcon")
-                                        .resizable()
-                                        .frame(width: 18, height: 20.85)
-                                    Text("\(weather.name), \(weather.sys.country)")
-                                        .font(.system(size: 16))
-                                        .fontWeight(.regular)
-                                        .foregroundColor(.biru3)
-                                }
-                                Text("\(weather.main.temp, specifier: "%.1f")°C")
-                                    .font(.system(size: 45))
-                                    .fontWeight(.bold)
+                            HStack{
+                                Image("locationIcon")
+                                    .resizable()
+                                    .frame(width: 18, height: 20.85)
+                                Text("\(weather.name), \(weather.sys.country)")
+                                    .font(.system(size: 16))
+                                    .fontWeight(.regular)
                                     .foregroundColor(.biru3)
-                                    
                             }
+
                             Spacer()
                             VStack{
-                                Text("\(weatherVM.mapWeatherCondition(description: weather.weather.first?.description ?? ""))")
+                                Text("\(weatherVM.mapWeatherCondition(description: weather.weather.first?.main ?? ""))")
                                     .font(.system(size: 16))
                                     .foregroundColor(.biru3)
-                                Image("dayIcon")
                             }
                         }
-                        .padding(.bottom, -0.1)
+                        
+                        HStack{
+                            Text("\(weather.main.temp, specifier: "%.1f")°C")
+                                .font(.system(size: 45))
+                                .fontWeight(.bold)
+                                .foregroundColor(.biru3)
+                            Spacer()
+                            Image("dayIcon")
+                        }
+                        .padding(.vertical, -0.1)
                         HStack{
                             HStack{
                                 Image("subicon1")
                                     .resizable()
                                     .frame(width: 15, height: 19)
+                                Spacer()
                                 Text("\(weather.main.humidity)%")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 18))
                                     .fontWeight(.bold)
                             }
                             .frame(maxWidth: .infinity, maxHeight: 45)
+                            .padding(.horizontal)
                             .background(.biru8)
                             .cornerRadius(10)
                             .overlay(
@@ -71,7 +75,7 @@ struct WeatherBox: View {
                                     .resizable()
                                     .frame(width: 15, height: 19)
                                 Text("\(weather.wind.speed, specifier: "%.1f") m/s")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 18))
                                     .fontWeight(.bold)
                             }
                             .frame(maxWidth: .infinity, maxHeight: 45)
@@ -85,11 +89,13 @@ struct WeatherBox: View {
                                 Image("subicon3")
                                     .resizable()
                                     .frame(width: 15, height: 19)
+                                Spacer()
                                 Text("\(getCompassDirection(degrees: weather.wind.deg))")
-                                    .font(.system(size: 16))
+                                    .font(.system(size: 18))
                                     .fontWeight(.bold)
                             }
                             .frame(maxWidth: .infinity, maxHeight: 45)
+                            .padding(.horizontal)
                             .background(.biru8)
                             .cornerRadius(10)
                             .overlay(
@@ -98,10 +104,10 @@ struct WeatherBox: View {
                             )
                         }
                         .foregroundColor(.biru3)
-                        .padding(.top, 5)
+                        .padding(.vertical, 3)
                         Text("Safe to sail")
                             .frame(maxWidth: .infinity, maxHeight: 45)
-                            .font(.system(size: 16))
+                            .font(.system(size: 18))
                             .fontWeight(.bold)
                             .foregroundColor(.biru3)
                             .background(.biru8)

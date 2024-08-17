@@ -20,6 +20,11 @@
 		2EA1D0752C6B110700A3A437 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1D0742C6B110700A3A437 /* WeatherModel.swift */; };
 		2EA1D0772C6B111F00A3A437 /* WeatherVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1D0762C6B111F00A3A437 /* WeatherVM.swift */; };
 		2EA1D07A2C6B153C00A3A437 /* WeatherBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1D0792C6B153C00A3A437 /* WeatherBox.swift */; };
+		2EA1D07E2C6B442500A3A437 /* TopNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1D07D2C6B442500A3A437 /* TopNews.swift */; };
+		2EA1D0802C6B4EB900A3A437 /* TodaysNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1D07F2C6B4EB900A3A437 /* TodaysNews.swift */; };
+		2EE55E0F2C6C7A6200482836 /* PricePredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE55E0E2C6C7A6200482836 /* PricePredictionView.swift */; };
+		2EE55E112C6C82F400482836 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE55E102C6C82F400482836 /* ProfileView.swift */; };
+		2EE55E132C6DF09F00482836 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE55E122C6DF09F00482836 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		2EA1D0762C6B111F00A3A437 /* WeatherVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVM.swift; sourceTree = "<group>"; };
 		2EA1D0782C6B11F300A3A437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2EA1D0792C6B153C00A3A437 /* WeatherBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBox.swift; sourceTree = "<group>"; };
+		2EA1D07D2C6B442500A3A437 /* TopNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNews.swift; sourceTree = "<group>"; };
+		2EA1D07F2C6B4EB900A3A437 /* TodaysNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysNews.swift; sourceTree = "<group>"; };
+		2EE55E0E2C6C7A6200482836 /* PricePredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricePredictionView.swift; sourceTree = "<group>"; };
+		2EE55E102C6C82F400482836 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2EE55E122C6DF09F00482836 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +123,7 @@
 		2EA1D0642C6A072800A3A437 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2EE55E122C6DF09F00482836 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -121,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				2EA1D0662C6A079E00A3A437 /* PredictView.swift */,
+				2EE55E102C6C82F400482836 /* ProfileView.swift */,
+				2EE55E0E2C6C7A6200482836 /* PricePredictionView.swift */,
 				2EA1D0722C6A1F0800A3A437 /* HomeScreen.swift */,
 			);
 			path = Views;
@@ -132,6 +145,8 @@
 				2EA1D0692C6A07DE00A3A437 /* ImagePicker.swift */,
 				2EA1D0702C6A0AAB00A3A437 /* PrimaryBTN.swift */,
 				2EA1D0792C6B153C00A3A437 /* WeatherBox.swift */,
+				2EA1D07D2C6B442500A3A437 /* TopNews.swift */,
+				2EA1D07F2C6B4EB900A3A437 /* TodaysNews.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -208,13 +223,18 @@
 			files = (
 				2EA1D0672C6A079E00A3A437 /* PredictView.swift in Sources */,
 				2EA1D06E2C6A085400A3A437 /* FishPredictionVM.swift in Sources */,
+				2EA1D0802C6B4EB900A3A437 /* TodaysNews.swift in Sources */,
 				2EA1D06A2C6A07DE00A3A437 /* ImagePicker.swift in Sources */,
+				2EE55E132C6DF09F00482836 /* LocationManager.swift in Sources */,
 				2EA1D0562C67AE2000A3A437 /* ContentView.swift in Sources */,
 				2EA1D0752C6B110700A3A437 /* WeatherModel.swift in Sources */,
 				2EA1D0732C6A1F0800A3A437 /* HomeScreen.swift in Sources */,
+				2EE55E112C6C82F400482836 /* ProfileView.swift in Sources */,
 				2EA1D0712C6A0AAB00A3A437 /* PrimaryBTN.swift in Sources */,
 				2EA1D07A2C6B153C00A3A437 /* WeatherBox.swift in Sources */,
+				2EA1D07E2C6B442500A3A437 /* TopNews.swift in Sources */,
 				2EA1D0542C67AE2000A3A437 /* BloomyApp.swift in Sources */,
+				2EE55E0F2C6C7A6200482836 /* PricePredictionView.swift in Sources */,
 				2EA1D06C2C6A080200A3A437 /* PredictionModels.swift in Sources */,
 				2EA1D0772C6B111F00A3A437 /* WeatherVM.swift in Sources */,
 			);
@@ -354,6 +374,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bloomy/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -385,6 +406,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bloomy/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
