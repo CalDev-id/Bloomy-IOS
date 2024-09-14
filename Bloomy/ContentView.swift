@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
             
 //            MarketScreen()
-            HomeScreen()
+            MarketView()
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Market")
@@ -45,7 +45,7 @@ struct ContentView: View {
                 }
         }
         .accentColor(.biru3)
-        
+        .background(.white)
     }
 }
 

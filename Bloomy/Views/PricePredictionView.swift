@@ -36,18 +36,18 @@ struct PricePredictionView: View {
 struct TopPriceView: View {
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment:.leading) {
                 Text("Fish Pricing")
-                    .fontWeight(.semibold)
-                    .font(.system(size: 19))
-                    .padding(.bottom, 5)
                 Text("Price your fish, \nunveil the value in every catch!")
-                    .fontWeight(.bold)
-                    .font(.system(size: 23))
+                    .font(.system(size: 20))
+                    .padding(.vertical, 5)
             }
+            .fontWeight(.semibold)
             .foregroundColor(.white)
+            Spacer()
         }
         .padding(.horizontal, 24)
+        .padding(.top, 10)
     }
 }
 
@@ -56,8 +56,11 @@ struct PricePrediction: View {
     @State var species: String? = nil
     @State private var selectedOption: String? = nil
     let options = ["Ikan Bandeng", "Ikan Teri", "Ikan K-Tongkol"]
+    let actualPrice = [20000, 35000, 15000]
     let grade = ["A", "B", "C"]
+    let sustainability = ["Sustainable", "Unsustainable"]
     let kosong = [" "]
+    let weight = [1,2,3,4,5,6,7,8,9,10]
     
     var body: some View {
         VStack{
@@ -68,8 +71,8 @@ struct PricePrediction: View {
                     }
                 }
                 Picker("Actual Price", selection: $selectedOption) {
-                    ForEach(options, id: \.self) { flavor in
-                        Text(flavor)
+                    ForEach(actualPrice, id: \.self) { flavor in
+                        Text(String(flavor))
                     }
                 }
                 HStack{
@@ -86,11 +89,25 @@ struct PricePrediction: View {
                     }
                     .frame(maxWidth: UIScreen.main.bounds.width / 4)
                 }
+                Picker("Sustainability", selection: $selectedOption) {
+                    ForEach(sustainability, id: \.self) { flavor in
+                        Text(flavor)
+                    }
+                }
+                Picker("Weight", selection: $selectedOption) {
+                    ForEach(weight, id: \.self) { flavor in
+                        HStack {
+                            Text(String(flavor))
+                            Text("Kg")
+                        }
+                    }
+                }
 
             }
             .cornerRadius(20)
             .foregroundColor(.biru3)
             .padding(.vertical, 20)
+            
         }
     }
 }

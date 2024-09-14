@@ -12,7 +12,7 @@ struct PredictView: View {
     @State private var isImagePickerPresented = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @StateObject private var classifier = ImageClassifier()
-    @State private var toggleResult: Bool = true
+    @State private var toggleResult: Bool = false
 
     var body: some View {
         ZStack {

@@ -87,7 +87,7 @@ class ImageClassifier: ObservableObject {
             return
         }
 
-        guard let url = URL(string: "https://bloomy-flask-production.up.railway.app/marine-grading/") else {
+        guard let url = URL(string: "https://parallel-arabelle-waifu-ical-cd5f2cfe.koyeb.app/marine-grading/") else {
             print("Invalid URL")
             return
         }
