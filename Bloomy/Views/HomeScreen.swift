@@ -27,10 +27,12 @@ struct HomeScreen: View {
 }
 
 struct TopView: View {
+    @StateObject private var authViewModel = AuthViewModel()
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Hello, Heical Chandra")
+                Text("Hello, \(authViewModel.name)")
                     .fontWeight(.medium)
                 Text("Welcome Back")
                     .fontWeight(.bold)
@@ -44,6 +46,9 @@ struct TopView: View {
                 .cornerRadius(200)
         }
         .padding(.horizontal, 24)
+        .onAppear {
+            authViewModel.checkUser()
+        }
     }
 }
 

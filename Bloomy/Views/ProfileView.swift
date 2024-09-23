@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ProfileView: View {
     var body: some View {
@@ -33,6 +34,8 @@ struct ProfileView: View {
 }
 
 struct TopProfileView: View {
+    @StateObject private var authViewModel = AuthViewModel()
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -56,12 +59,12 @@ struct TopProfileView: View {
                         .cornerRadius(200)
                         .padding(.trailing, 10)
                     VStack(alignment: .leading) {
-                        Text("Ical Mancing")
+                        Text(authViewModel.name)
                             .font(.system(size: 24))
                             .fontWeight(.semibold)
                         Text("+62 878 1932 6417")
                             .font(.system(size: 18))
-                        Text("haical31@gmail,com")
+                        Text(authViewModel.email)
                             .font(.system(size: 18))
                             .foregroundColor(.white)
                     }
@@ -91,10 +94,12 @@ struct TopProfileView: View {
             .foregroundColor(.white)
         }
         .padding(.horizontal, 24)
+
     }
 }
 
 struct ProfileSettings: View {
+    @AppStorage("uid") var userID: String = ""
     var body: some View {
         VStack {
             HStack {
@@ -155,15 +160,28 @@ struct ProfileSettings: View {
                     .fontWeight(.medium)
                     .foregroundColor(.hitam)
                     .font(.system(size: 24))
-                Text("Sign out")
-                    .foregroundColor(.hitam)
-                    .font(.system(size: 17))
-                    .fontWeight(.medium)
-                Spacer()
-                Text("App version 1.0.0")
-                    .foregroundColor(.hitam)
-                    .font(.system(size: 15))
-                    .fontWeight(.light)
+                HStack{
+                    Text("Sign out")
+                        .foregroundColor(.hitam)
+                        .font(.system(size: 17))
+                        .fontWeight(.medium)
+                    Spacer()
+                    Text("App version 1.0.0")
+                        .foregroundColor(.hitam)
+                        .font(.system(size: 15))
+                        .fontWeight(.light)
+                }
+                .onTapGesture {
+                    let firebaseAuth = Auth.auth()
+                    do {
+                      try firebaseAuth.signOut()
+                        withAnimation{
+                            userID = ""
+                        }
+                    } catch let signOutError as NSError {
+                      print("Error signing out: %@", signOutError)
+                    }
+                }
             }
             .padding(.bottom, 10)
         }

@@ -18,8 +18,8 @@ struct PrimaryBTN: View {
             Text(name)
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
+                .frame(width: UIScreen.main.bounds.width - 40, height: 45)
         }
-        .frame(width: UIScreen.main.bounds.width - 40, height: 40)
         .background(Color.color)
         .cornerRadius(10)
     }
