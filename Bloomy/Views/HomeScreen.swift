@@ -27,7 +27,7 @@ struct HomeScreen: View {
 }
 
 struct TopView: View {
-    @StateObject private var authViewModel = AuthViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         HStack {
@@ -46,9 +46,6 @@ struct TopView: View {
                 .cornerRadius(200)
         }
         .padding(.horizontal, 24)
-        .onAppear {
-            authViewModel.checkUser()
-        }
     }
 }
 

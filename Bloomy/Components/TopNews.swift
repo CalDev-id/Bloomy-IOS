@@ -35,22 +35,27 @@ struct TopNews: View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack {
                 ForEach(topNews, id: \.self) { news in
-                    ZStack{
-                        Image(news["img"]!)
-                            .resizable()
-                        VStack {
-                            Spacer()
-                            Text(news["title"]!)
-                                .font(.system(size: 16))
-                                .padding(.horizontal, 10)
-                                .padding(.bottom)
+                    NavigationLink(destination: WebView(url: URL(string: "https://bloomy-idn.vercel.app/"))
+                        .ignoresSafeArea()
+                        ){
+                        ZStack{
+                            Image(news["img"]!)
+                                .resizable()
+                            VStack(alignment:.leading){
+                                Spacer()
+                                Text(news["title"]!)
+                                    .font(.system(size: 16))
+                                    .padding(.horizontal, 10)
+                                    .padding(.bottom)
+                                    .multilineTextAlignment(.leading)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .background(.black.opacity(0.5))
+                            .foregroundColor(.white)
                         }
-                        .frame(maxWidth: .infinity)
-                        .background(.black.opacity(0.5))
-                        .foregroundColor(.white)
-                    }
-                    .frame(maxWidth: 230, maxHeight: 148)
+                        .frame(maxWidth: 230, maxHeight: 148)
                     .cornerRadius(20)
+                    }
                 }
             }
         }

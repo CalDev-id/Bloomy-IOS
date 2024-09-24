@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var authViewModel = AuthViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         TabView {
@@ -45,6 +45,7 @@ struct ContentView: View {
                     Image(systemName: "person.circle")
                     Text("Profile")
                 }
+            
         }
         .accentColor(.biru3)
         .background(.white)

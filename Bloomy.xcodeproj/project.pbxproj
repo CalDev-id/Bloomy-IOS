@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E718F0D2CA16CF4001E53EB /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E718F0C2CA16CF4001E53EB /* SplashScreen.swift */; };
+		2E718F0F2CA26AC2001E53EB /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E718F0E2CA26AC2001E53EB /* WebView.swift */; };
 		2E970D412C95D25C007862ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E970D402C95D25C007862ED /* GoogleService-Info.plist */; };
 		2E970D442C95D33B007862ED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2E970D432C95D33B007862ED /* FirebaseAnalytics */; };
 		2E970D462C95D33B007862ED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E970D452C95D33B007862ED /* FirebaseAuth */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E718F0C2CA16CF4001E53EB /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		2E718F0E2CA26AC2001E53EB /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		2E970D402C95D25C007862ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E970D4C2C95D501007862ED /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		2E970D4E2C95D50B007862ED /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				2EA1D0782C6B11F300A3A437 /* Info.plist */,
 				2EA1D0532C67AE2000A3A437 /* BloomyApp.swift */,
 				2EA1D0552C67AE2000A3A437 /* ContentView.swift */,
+				2E718F0C2CA16CF4001E53EB /* SplashScreen.swift */,
 				2EA1D06F2C6A0A8700A3A437 /* Components */,
 				2EA1D0652C6A077700A3A437 /* Views */,
 				2EA1D0642C6A072800A3A437 /* Services */,
@@ -171,6 +176,7 @@
 				2E970D4B2C95D4CC007862ED /* Auth */,
 				2EA1D0662C6A079E00A3A437 /* PredictView.swift */,
 				2EE55E102C6C82F400482836 /* ProfileView.swift */,
+				2E718F0E2CA26AC2001E53EB /* WebView.swift */,
 				2EE55E0E2C6C7A6200482836 /* PricePredictionView.swift */,
 				2EE55E4F2C74A7FB00482836 /* MarketView.swift */,
 				2EA1D0722C6A1F0800A3A437 /* HomeScreen.swift */,
@@ -279,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E718F0D2CA16CF4001E53EB /* SplashScreen.swift in Sources */,
 				2EA1D0672C6A079E00A3A437 /* PredictView.swift in Sources */,
 				2EA1D06E2C6A085400A3A437 /* FishPredictionVM.swift in Sources */,
 				2EA1D0802C6B4EB900A3A437 /* TodaysNews.swift in Sources */,
@@ -289,6 +296,7 @@
 				2EA1D0752C6B110700A3A437 /* WeatherModel.swift in Sources */,
 				2EA1D0732C6A1F0800A3A437 /* HomeScreen.swift in Sources */,
 				2EE55E112C6C82F400482836 /* ProfileView.swift in Sources */,
+				2E718F0F2CA26AC2001E53EB /* WebView.swift in Sources */,
 				2EE55E542C74D35800482836 /* ColumnItemList.swift in Sources */,
 				2E970D4D2C95D501007862ED /* RegisterView.swift in Sources */,
 				2EA1D0712C6A0AAB00A3A437 /* PrimaryBTN.swift in Sources */,

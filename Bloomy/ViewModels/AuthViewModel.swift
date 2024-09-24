@@ -44,8 +44,7 @@ class AuthViewModel: ObservableObject {
                     print("Name field not found or is empty for user UID: \(user.uid)")
                 }
             }
-            print(self.name)
-            print(self.email)
+
         } else {
             self.isLoggedIn = false
             print("No user is currently logged in.")

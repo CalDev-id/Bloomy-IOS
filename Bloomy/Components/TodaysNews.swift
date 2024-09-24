@@ -34,35 +34,40 @@ struct TodaysNews: View {
     var body: some View {
         VStack {
             ForEach(todaysNews, id: \.self) { news in
-                HStack{
-                    Image(news["img"]!)
-                        .resizable()
-                        .frame(maxWidth: 123, maxHeight: 85)
-                        .cornerRadius(10)
-                    VStack(alignment: .leading) {
-                        Text(news["title"]!)
-                            .padding(.bottom, 5)
-                            .font(.system(size: 16))
-                        HStack{
-                            Text("21 Jul 2023, 12:21 WIB")
-                                .font(.system(size: 12))
-                            Spacer()
+                NavigationLink(destination: WebView(url: URL(string: "https://bloomy-idn.vercel.app/"))
+                    .ignoresSafeArea()
+                    ){
+                    HStack{
+                        Image(news["img"]!)
+                            .resizable()
+                            .frame(maxWidth: 123, maxHeight: 85)
+                            .cornerRadius(10)
+                        VStack(alignment: .leading) {
+                            Text(news["title"]!)
+                                .padding(.bottom, 5)
+                                .font(.system(size: 16))
+                                .multilineTextAlignment(.leading)
                             HStack{
-                                Text("Read more")
+                                Text("21 Jul 2023, 12:21 WIB")
                                     .font(.system(size: 12))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.biru3)
-                                    .padding(.trailing, -5)
-                                Image(systemName: "chevron.forward")
-                                    .font(.system(size: 8))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.biru3)
+                                Spacer()
+                                HStack{
+                                    Text("Read more")
+                                        .font(.system(size: 12))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.biru3)
+                                        .padding(.trailing, -5)
+                                    Image(systemName: "chevron.forward")
+                                        .font(.system(size: 8))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.biru3)
+                                }
                             }
                         }
                     }
-
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
             }
         }
         .padding(.trailing, 20)

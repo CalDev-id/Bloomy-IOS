@@ -30,37 +30,40 @@ struct LoginView: View {
             ZStack{
                 Color.silver
                     .cornerRadius(20)
-                VStack{
-                    TopLoginView(textFieldEmail: $textFieldEmail, textFieldPass: $textFieldPass)
-                    if showError {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
-                    PrimaryBTN(name: "Sign in", todo: {
-                        authViewModel.login(email: textFieldEmail, password: textFieldPass, completion: { error in
-                            if let error = error {
-                                showError = true
-                                errorMessage = error.localizedDescription
-                            }
-                        })
-                    })
-                        .padding(.top, 10)
-                    NavigationLink(destination: RegisterView().environmentObject(authViewModel)){
-                        HStack{
-                            Text("Don’t have an account?")
-                            Text("Sign Up")
-                                .foregroundColor(.biru3)
-                                .fontWeight(.semibold)
+                ScrollView {
+                    VStack{
+                        TopLoginView(textFieldEmail: $textFieldEmail, textFieldPass: $textFieldPass)
+                        if showError {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .padding()
                         }
-                        .padding(.vertical, 5)
+                        PrimaryBTN(name: "Sign in", todo: {
+                            authViewModel.login(email: textFieldEmail, password: textFieldPass, completion: { error in
+                                if let error = error {
+                                    showError = true
+                                    errorMessage = error.localizedDescription
+                                }
+                            })
+                        })
+                            .padding(.top, 10)
+                        NavigationLink(destination: RegisterView().environmentObject(authViewModel)){
+                            HStack{
+                                Text("Don’t have an account?")
+                                Text("Sign Up")
+                                    .foregroundColor(.biru3)
+                                    .fontWeight(.semibold)
+                            }
+                            .padding(.vertical, 5)
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
             }
             .padding(.top, 180)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -29,52 +29,55 @@ struct RegisterView: View {
                     Text("Create your new account")
                     Spacer()
                 }
-                .padding(.top, 70)
+                .padding(.top, 80)
                 .foregroundColor(.white)
             }
             ZStack{
                 Color.silver
                     .cornerRadius(20)
-                VStack{
-                    TopRegisterView(textFieldEmail: $textFieldEmail, textFieldPass: $textFieldPass, textFieldName: $name, confirmPassword: $confirmPassword)
-                    if showError {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .padding()
-                    }
-                    PrimaryBTN(name: "Sign in", todo: {
-                        if textFieldPass != confirmPassword {
-                            // Jika password tidak cocok, tampilkan pesan error
-                            errorMessage = "Password does not match."
-                        } else {
-                            // Password cocok, lanjutkan proses pendaftaran
-                            errorMessage = ""
-                            // Lakukan aksi pendaftaran di sini
-                            print("Passwords match, proceed with signup.")
-                            authViewModel.signUp(name: name, email: textFieldEmail, password: textFieldPass) { error in
-                                if let error = error {
-                                    showError = true
-                                    errorMessage = error.localizedDescription
+                ScrollView {
+                    VStack{
+                        TopRegisterView(textFieldEmail: $textFieldEmail, textFieldPass: $textFieldPass, textFieldName: $name, confirmPassword: $confirmPassword)
+                        if showError {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+                        PrimaryBTN(name: "Sign up", todo: {
+                            if textFieldPass != confirmPassword {
+                                // Jika password tidak cocok, tampilkan pesan error
+                                errorMessage = "Password does not match."
+                            } else {
+                                // Password cocok, lanjutkan proses pendaftaran
+                                errorMessage = ""
+                                // Lakukan aksi pendaftaran di sini
+                                print("Passwords match, proceed with signup.")
+                                authViewModel.signUp(name: name, email: textFieldEmail, password: textFieldPass) { error in
+                                    if let error = error {
+                                        showError = true
+                                        errorMessage = error.localizedDescription
+                                    }
                                 }
                             }
+                        })
+                            .padding(.top, 10)
+                        NavigationLink(destination: LoginView().environmentObject(authViewModel)){
+                            HStack{
+                                Text("Already have an account?")
+                                Text("Sign in")
+                                    .foregroundColor(.biru3)
+                                    .fontWeight(.semibold)
+                            }
+                            .padding(.vertical, 5)
                         }
-                    })
-                        .padding(.top, 10)
-                    NavigationLink(destination: LoginView().environmentObject(authViewModel)){
-                        HStack{
-                            Text("Already have an account?")
-                            Text("Sign in")
-                                .foregroundColor(.biru3)
-                                .fontWeight(.semibold)
-                        }
-                        .padding(.vertical, 5)
+                        Spacer()
                     }
-                    Spacer()
                 }
             }
             .padding(.top, 180)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
 }
 

@@ -34,8 +34,8 @@ struct ProfileView: View {
 }
 
 struct TopProfileView: View {
-    @StateObject private var authViewModel = AuthViewModel()
-    
+    @EnvironmentObject var authViewModel: AuthViewModel
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -94,12 +94,12 @@ struct TopProfileView: View {
             .foregroundColor(.white)
         }
         .padding(.horizontal, 24)
-
     }
 }
 
 struct ProfileSettings: View {
-    @AppStorage("uid") var userID: String = ""
+    @EnvironmentObject var authViewModel: AuthViewModel
+
     var body: some View {
         VStack {
             HStack {
@@ -171,17 +171,9 @@ struct ProfileSettings: View {
                         .font(.system(size: 15))
                         .fontWeight(.light)
                 }
-                .onTapGesture {
-                    let firebaseAuth = Auth.auth()
-                    do {
-                      try firebaseAuth.signOut()
-                        withAnimation{
-                            userID = ""
-                        }
-                    } catch let signOutError as NSError {
-                      print("Error signing out: %@", signOutError)
-                    }
-                }
+            }
+            .onTapGesture {
+                authViewModel.signOut()
             }
             .padding(.bottom, 10)
         }

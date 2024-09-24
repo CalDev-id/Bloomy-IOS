@@ -40,25 +40,30 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct BloomyApp: App {
     
-  // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-@StateObject var authViewModel = AuthViewModel()
-
-
-  var body: some Scene {
-    WindowGroup {
-        NavigationView{
-            if authViewModel.isLoggedIn {
-                ContentView()
-                    .environmentObject(authViewModel)
-                    .onAppear {
-                        authViewModel.checkUser()
-                    }
-            } else {
-                LoginView()
-                    .environmentObject(authViewModel)
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authViewModel = AuthViewModel()
+    
+    var body: some Scene {
+        WindowGroup {
+            NavigationView {
+                if authViewModel.isLoggedIn {
+                    SplashScreenView()
+                        .environmentObject(authViewModel)
+                        .onAppear {
+                            authViewModel.checkUser() // Mengecek status session saat aplikasi dimulai
+                        }
+                } else {
+                    LoginView()
+                        .environmentObject(authViewModel)
+                        .onAppear {
+                            authViewModel.checkUser() // Mengecek apakah pengguna masih dalam session saat aplikasi dimulai
+                        }
+                }
             }
         }
     }
-  }
 }
+
+
+
